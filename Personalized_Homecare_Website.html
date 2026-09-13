@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Homecare | Private-Pay Intermittent Nursing Services</title>
+    <style>
+        :root {
+            --primary: #005f73;
+            --secondary: #0a9396;
+            --accent: #ee9b00;
+            --dark: #1d3557;
+            --light-bg: #f4f9f9;
+            --text: #2b2d42;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--primary);
+            color: #ffffff;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .logo p {
+            font-size: 0.85rem;
+            color: #e9d8a6;
+            font-weight: 500;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #f4f9f9;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #ffffff;
+            padding: 0.8rem 1.8rem;
+            border-radius: 5px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #ca6702;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+            margin: 8px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background-color: var(--light-bg);
+            border-left: 4px solid var(--secondary);
+            padding: 1.5rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .service-price {
+            font-size: 1rem;
+            color: var(--primary);
+            font-weight: 700;
+            background-color: #e0f2f1;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        /* Bio Section */
+        .bio-section {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 2rem;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .bio-photo-placeholder {
+            width: 180px;
+            height: 180px;
+            background-color: #e9ecef;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: center;
+            border: 3px solid var(--secondary);
+            margin: 0 auto;
+        }
+
+        .bio-text {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .bio-text h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .bio-text .subtitle {
+            font-size: 0.95rem;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Engagement Form Section */
+        .form-container {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            padding: 2.5rem;
+            max-width: 750px;
+            margin: 0 auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 110px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.9rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #004d5e;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: #ffffff;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            color: #d3d3d3;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .bio-section {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>Personalized Homecare</h1>
+                <p>Private-Pay Intermittent Nursing Services</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact & Inquiry</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Professional, Compassionate Nursing Support at Home</h2>
+            <p>Serving South Windsor, CT & Surrounding Areas with tailored private-pay nursing care, flexible scheduling, and direct nurse access.</p>
+            <a href="#contact" class="cta-btn">Request a Care Inquiry</a>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <!-- Nurse Bio Section -->
+        <section id="about">
+            <h2 class="section-title">Meet Your Nurse</h2>
+            <div class="bio-section">
+                <div class="bio-photo-placeholder">
+                    [ Photo Placeholder ]
+                </div>
+                <div class="bio-text">
+                    <h3>Stefanie L. Coughlin, RN, BSN</h3>
+                    <div class="subtitle">Founder & Lead Registered Nurse</div>
+                    <p><strong>[PLACEHOLDER FOR STEPHANIE'S BIO]</strong></p>
+                    <p style="margin-top: 0.8rem;">Stefanie L. Coughlin is a dedicated Registered Nurse with extensive nursing experience. She provides personalized, high-quality in-home health management tailored to individual patient needs without insurance delays or corporate restrictions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services & Pricing Section -->
+        <section id="services">
+            <h2 class="section-title">Our Services & Rates</h2>
+            <div class="services-grid">
+
+                <div class="service-card">
+                    <h3>Initial Assessment <span class="service-price">$120</span></h3>
+                    <p>Comprehensive home nursing assessment and setup of an individualized care plan.</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Medication Management <span class="service-price">$120 / $60–$80</span></h3>
+                    <p>Initial setup box setup ($120) and ongoing weekly/bi-weekly refill management ($60–$80).</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Wound Care Assistance <span class="service-price">$100–$120</span></h3>
+                    <p>Professional wound assessment, dressing changes, and specialized care plan execution.</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Chronic Disease Check-In <span class="service-price">$90–$120</span></h3>
+                    <p>Routine vital checks and ongoing symptom management for COPD, Diabetes, CHF, and Hypertension.</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Sick Visit / Triage <span class="service-price">$90–$120</span></h3>
+                    <p>In-person symptom evaluation and clinical guidance on appropriate next steps.</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Pharmacy Pick-Up / Drop-Off <span class="service-price">$50–$70</span></h3>
+                    <p>Convenient prescription retrieval and delivery to your home based on travel distance.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Engagement Form Section -->
+        <section id="contact">
+            <h2 class="section-title">Inquire About Services</h2>
+            <div class="form-container">
+                <!-- Using Formspree to route directly to Personalizedhomecare123@gmail.com -->
+                <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                    
+                    <!-- Formspree redirection setup -->
+                    <input type="hidden" name="_to" value="Personalizedhomecare123@gmail.com">
+                    <input type="hidden" name="_subject" value="New Patient Inquiry - Personalized Homecare">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="(860) 000-0000">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="john@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="town">City / Town *</label>
+                            <input type="text" id="town" name="town" required placeholder="South Windsor, CT">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Service Interested In</label>
+                        <select id="service" name="service">
+                            <option value="Initial Assessment">Initial Assessment ($120)</option>
+                            <option value="Medication Management">Medication Management ($120 / $60-$80)</option>
+                            <option value="Wound Care Assistance">Wound Care Assistance ($100-$120)</option>
+                            <option value="Chronic Disease Check-In">Chronic Disease Check-In ($90-$120)</option>
+                            <option value="Sick Visit / Triage">Sick Visit / Triage ($90-$120)</option>
+                            <option value="Pharmacy Pick-Up">Pharmacy Pick-Up / Drop-Off ($50-$70)</option>
+                            <option value="General Inquiry">General Consultation / Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Care Needs / Notes *</label>
+                        <textarea id="message" name="message" required placeholder="Please describe the care needed or best times to reach you..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit Care Inquiry</button>
+                </form>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Personalized Homecare</strong> | Stefanie L. Coughlin, RN, BSN</p>
+        <p>Phone: 860-818-1718 | Email: Personalizedhomecare123@gmail.com</p>
+        <p>Service Area: South Windsor, CT (06074) & Surrounding Areas • Mileage Rate: $0.70/mile</p>
+        <p style="font-size:0.8rem; color: #aaa; margin-top: 10px;">Payment Accepted: Cash • Apple Pay • Venmo | Private-Pay Only (Insurance billing not available)</p>
+    </footer>
+
+</body>
+</html>
