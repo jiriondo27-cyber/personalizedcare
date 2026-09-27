@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personalized Homecare | Private-Pay Intermittent Nursing Services</title>
+    <title>Personalized Home Care, LLC | Private-Pay Intermittent Nursing Services</title>
+    <!-- Font Awesome Icons for Social Media & Features -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #005f73;
@@ -12,12 +14,17 @@
             --dark: #1d3557;
             --light-bg: #f4f9f9;
             --text: #2b2d42;
+            --card-shadow: 0 8px 20px rgba(0,0,0,0.08);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -27,11 +34,46 @@
             line-height: 1.6;
         }
 
+        /* Top Announcement Bar for Hours & Quick Contact */
+        .top-bar {
+            background-color: var(--dark);
+            color: #e9d8a6;
+            padding: 0.5rem 2rem;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .top-bar-info {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .top-bar-info i {
+            color: var(--accent);
+            margin-right: 5px;
+        }
+
+        .top-bar-social a {
+            color: #ffffff;
+            margin-left: 10px;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .top-bar-social a:hover {
+            color: var(--accent);
+        }
+
         /* Header & Navigation */
         header {
             background-color: var(--primary);
             color: #ffffff;
-            padding: 1rem 2rem;
+            padding: 1rem 2rem 0 2rem;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -58,6 +100,7 @@
             font-size: 0.85rem;
             color: #e9d8a6;
             font-weight: 500;
+            margin-bottom: 0.8rem;
         }
 
         nav ul {
@@ -66,16 +109,57 @@
             gap: 1.5rem;
         }
 
+        nav li {
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
         nav a {
             color: #ffffff;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
             transition: color 0.2s ease;
+            display: inline-block;
         }
 
         nav a:hover {
             color: var(--accent);
+        }
+
+        /* Yellow Bar Indicator for Active Navigation Section */
+        nav li::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+            border-radius: 2px 2px 0 0;
+        }
+
+        nav li.active::after {
+            width: 100%;
+        }
+
+        /* Active Section Banner Display Bar */
+        .section-indicator-bar {
+            background-color: var(--accent);
+            color: #1d3557;
+            text-align: center;
+            padding: 0.5rem 1rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        .section-indicator-bar.show {
+            display: block;
         }
 
         /* Hero Section */
@@ -111,11 +195,12 @@
             border-radius: 5px;
             font-weight: 700;
             text-decoration: none;
-            transition: background 0.2s ease;
+            transition: background 0.2s ease, transform 0.2s ease;
         }
 
         .cta-btn:hover {
             background-color: #ca6702;
+            transform: translateY(-2px);
         }
 
         /* Main Container */
@@ -127,6 +212,7 @@
 
         section {
             margin-bottom: 4rem;
+            scroll-margin-top: 100px;
         }
 
         .section-title {
@@ -147,50 +233,320 @@
             border-radius: 2px;
         }
 
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+        /* Modern Connected Timeline Workflow */
+        .timeline-wrapper {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1rem 0;
         }
 
-        .service-card {
-            background-color: var(--light-bg);
-            border-left: 4px solid var(--secondary);
-            padding: 1.5rem;
-            border-radius: 6px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        /* Central vertical line for desktop */
+        .timeline-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: linear-gradient(180deg, var(--secondary) 0%, var(--primary) 100%);
+            transform: translateX(-50%);
+            border-radius: 2px;
         }
 
-        .service-card h3 {
-            font-size: 1.2rem;
-            color: var(--dark);
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            width: 50%;
+            padding: 0 2rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-badge {
+            position: absolute;
+            top: 15px;
+            width: 46px;
+            height: 46px;
+            background-color: var(--accent);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 800;
+            box-shadow: 0 0 0 6px #ffffff, 0 4px 10px rgba(0,0,0,0.15);
+            z-index: 10;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-badge {
+            right: -23px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-badge {
+            left: -23px;
+        }
+
+        .timeline-content {
+            background: #ffffff;
+            padding: 1.5rem 1.8rem;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid #e2e8f0;
+            border-top: 4px solid var(--secondary);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-4px);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.15rem;
+            color: var(--primary);
             margin-bottom: 0.5rem;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 8px;
         }
 
-        .service-price {
-            font-size: 1rem;
-            color: var(--primary);
-            font-weight: 700;
-            background-color: #e0f2f1;
-            padding: 3px 8px;
-            border-radius: 4px;
+        .timeline-item:nth-child(odd) .timeline-content h3 {
+            justify-content: flex-end;
         }
 
-        .service-card p {
-            font-size: 0.95rem;
+        .timeline-content p {
+            font-size: 0.92rem;
             color: #555;
+            line-height: 1.5;
         }
 
-        /* Bio Section */
-        .bio-section {
+        /* Why Choose Us - 4 Visual Pillars */
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .reason-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            border-top: 4px solid var(--secondary);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .reason-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+
+        .reason-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #e0f2f1;
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 1.2rem auto;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .reason-card:hover .reason-icon {
+            background-color: var(--primary);
+            color: #ffffff;
+        }
+
+        .reason-card h3 {
+            font-size: 1.15rem;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .reason-card p {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        /* Hours Grid Section */
+        .hours-container {
             background-color: #ffffff;
             border: 1px solid #e0e0e0;
             border-radius: 8px;
             padding: 2rem;
+            box-shadow: var(--card-shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .hours-card {
+            background-color: var(--light-bg);
+            border-left: 4px solid var(--secondary);
+            padding: 1.25rem;
+            border-radius: 6px;
+        }
+
+        .hours-card h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hours-card p {
+            font-size: 0.95rem;
+            color: #444;
+            font-weight: 600;
+        }
+
+        .hours-card span {
+            display: block;
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: normal;
+            margin-top: 2px;
+        }
+
+        /* Interactive Services Grid */
+        .services-interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card-interactive {
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card-interactive:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+        }
+
+        .service-img-wrapper {
+            position: relative;
+            height: 180px;
+            background-color: #e2e8f0;
+            overflow: hidden;
+        }
+
+        .service-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card-interactive:hover .service-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .service-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: var(--primary);
+            color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .service-card-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .service-card-body h3 {
+            font-size: 1.25rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card-body p {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 1.25rem;
+            flex-grow: 1;
+        }
+
+        .service-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #edf2f7;
+            padding-top: 1rem;
+            margin-top: auto;
+        }
+
+        .rate-box {
+            background-color: #e0f2f1;
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .inquire-link {
+            color: var(--secondary);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .inquire-link:hover {
+            color: var(--primary);
+        }
+
+        /* Bio & History Sections */
+        .bio-section, .history-section {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .bio-section {
             display: flex;
             gap: 2rem;
             align-items: center;
@@ -198,8 +554,8 @@
         }
 
         .bio-photo-placeholder {
-            width: 90px;
-            height: 90px;
+            width: 180px;
+            height: 180px;
             background-color: #e9ecef;
             border-radius: 50%;
             display: flex;
@@ -229,6 +585,29 @@
             color: var(--secondary);
             font-weight: 600;
             margin-bottom: 1rem;
+        }
+
+        .history-card {
+            background-color: var(--light-bg);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem 2rem;
+            border-radius: 6px;
+        }
+
+        .history-card h3 {
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .history-card p {
+            margin-bottom: 1rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .history-card p:last-child {
+            margin-bottom: 0;
         }
 
         /* Engagement Form Section */
@@ -291,11 +670,11 @@
             background-color: #004d5e;
         }
 
-        /* Footer */
+        /* Footer & Social Icons */
         footer {
             background-color: var(--dark);
             color: #ffffff;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             text-align: center;
             font-size: 0.9rem;
         }
@@ -305,10 +684,43 @@
             color: #d3d3d3;
         }
 
+        .footer-social-links {
+            margin: 1.2rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+        }
+
+        .footer-social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            color: #ffffff;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+        }
+
+        .footer-social-links a:hover {
+            background-color: var(--accent);
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+
         @media (max-width: 768px) {
-            .header-container {
+            .header-container, .top-bar {
                 flex-direction: column;
-                gap: 1rem;
+                text-align: center;
+                gap: 0.8rem;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.8rem;
             }
             .form-row {
                 grid-template-columns: 1fr;
@@ -317,27 +729,67 @@
                 flex-direction: column;
                 text-align: center;
             }
+            /* Responsive adjustments for vertical timeline */
+            .timeline-wrapper::before {
+                left: 20px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 0;
+                text-align: left !important;
+            }
+            .timeline-item:nth-child(even), .timeline-item:nth-child(odd) {
+                left: 0;
+            }
+            .timeline-badge {
+                left: -3px !important;
+                right: auto !important;
+            }
+            .timeline-item:nth-child(odd) .timeline-content h3 {
+                justify-content: flex-start;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- Top Announcement Bar for Hours & Quick Contact -->
+    <div class="top-bar">
+        <div class="top-bar-info">
+            <span><i class="fa-solid fa-clock"></i> Office Hours: Mon - Thurs: 9:00 AM - 3:00 PM | Fri - Sat: By Appt | Sun: Closed (24/7 On-Call Support Available)</span>
+            <span><i class="fa-solid fa-phone"></i> 959-265-0682</span>
+        </div>
+        <div class="top-bar-social">
+            <a href="https://www.facebook.com/profile.php?id=61594777616543" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+    </div>
+
     <!-- Navigation Header -->
     <header>
         <div class="header-container">
             <div class="logo">
-                <h1>Personalized Homecare</h1>
+                <h1>Personalized Home Care, LLC</h1>
                 <p>Private-Pay Intermittent Nursing Services</p>
             </div>
             <nav>
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Contact & Inquiry</a></li>
+                <ul id="nav-list">
+                    <li><a href="#why-us" data-title="Why Choose Us">Why Choose Us</a></li>
+                    <li><a href="#how-it-works" data-title="Navigating Your Care Journey">How It Works</a></li>
+                    <li><a href="#history" data-title="Our History">Our History</a></li>
+                    <li><a href="#team" data-title="Our Team">Our Team</a></li>
+                    <li><a href="#hours" data-title="Office Hours & Availability">Office Hours</a></li>
+                    <li><a href="#services" data-title="Our Nursing Services & Rates">Services</a></li>
+                    <li><a href="#contact" data-title="Inquire About Services">Contact & Inquiry</a></li>
                 </ul>
             </nav>
         </div>
     </header>
+
+    <!-- Active Section Banner Bar (Displays section title when clicked) -->
+    <div class="section-indicator-bar" id="active-section-display">
+        Currently Viewing: <span id="section-title-text">Why Choose Us</span>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -350,55 +802,241 @@
 
     <div class="container">
 
-        <!-- Nurse Bio Section -->
-        <section id="about">
-            <h2 class="section-title">Meet Your Nurse</h2>
-            <div class="bio-section">
-                <div class="bio-photo-placeholder">
-                    <img src="icon.png" alt="Personalized Homecare" width=150>
+        <!-- Why Choose Us Section (4 Visual Pillars) -->
+        <section id="why-us">
+            <h2 class="section-title">Why Choose Personalized Home Care, LLC</h2>
+            <div class="reasons-grid">
+                
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fa-solid fa-user-nurse"></i>
+                    </div>
+                    <h3>Nurse-Owned & Operated</h3>
+                    <p>Led directly by an experienced Registered Nurse, ensuring high clinical standards, direct communication, and personalized care oversight.</p>
                 </div>
-                <div class="bio-text">
-                    <h3>Stefanie L. Coughlin, RN, BSN</h3>
-                    <div class="subtitle">Founder & Lead Registered Nurse</div>
-                    <p><strong>[PLACEHOLDER FOR STEPHANIE'S BIO]</strong></p>
-                    <p style="margin-top: 0.8rem;">Stefanie L. Coughlin is a dedicated Registered Nurse with extensive nursing experience. She provides personalized, high-quality in-home health management tailored to individual patient needs without insurance delays or corporate restrictions.</p>
+
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h3>Client-Centered Care</h3>
+                    <p>Care plans tailored entirely around individual lifestyle, health needs, and personal goals, treating every client with dignity and respect.</p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3>Private-Pay Independence</h3>
+                    <p>No insurance restrictions, delays, or authorization barriers—allowing flexible scheduling and immediate, uninterrupted care delivery.</p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fa-solid fa-house-chimney-medical"></i>
+                    </div>
+                    <h3>Promoting Independence</h3>
+                    <p>Dedicated to helping clients remain safe, comfortable, and independent in their own homes through compassionate, reliable support.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- How It Works / Timeline Workflow Section -->
+        <section id="how-it-works">
+            <h2 class="section-title">Navigating Your Care Journey</h2>
+            
+            <div class="timeline-wrapper">
+                
+                <!-- Step 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-badge"><i class="fa-solid fa-phone-volume"></i></div>
+                    <div class="timeline-content">
+                        <h3>1. Direct Initial Contact</h3>
+                        <p>Reach out via phone or online inquiry to discuss your immediate needs, concerns, or questions with a Registered Nurse.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-badge"><i class="fa-solid fa-house-user"></i></div>
+                    <div class="timeline-content">
+                        <h3>2. In-Home Consultation</h3>
+                        <p>Stefanie conducts a thorough in-person assessment in your home to evaluate safety, medical needs, and specific care preferences.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-badge"><i class="fa-solid fa-user-doctor"></i></div>
+                    <div class="timeline-content">
+                        <h3>3. Provider Coordination & Plan</h3>
+                        <p>We work in close coordination with your primary physician or medical team to align our nursing care plan directly with your existing prescriptions and treatment goals.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-badge"><i class="fa-solid fa-hand-holding-medical"></i></div>
+                    <div class="timeline-content">
+                        <h3>4. Ongoing Care & Oversight</h3>
+                        <p>Receive scheduled, high-quality nursing visits, routine symptom monitoring, and regular updates shared directly with family and physicians.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Company History Section -->
+        <section id="history">
+            <h2 class="section-title">Our Background & History</h2>
+            <div class="history-section">
+                <div class="history-card">
+                    <h3>Established in 2026</h3>
+                    <p>Personalized Home Care, LLC may be a young company, but it is built on a strong foundation of experience, dedication, and compassion. Our owner brings 8 years of hands‑on expertise in the home‑care industry, providing high‑quality, client‑centered nursing services throughout Connecticut.</p>
+                    <p>This company was created to offer a more personal, reliable, and professional approach to in‑home care—one where every client is treated with dignity, respect, and individualized attention. Although our business is new, our commitment to excellence is backed by nearly a decade of real‑world clinical experience and a genuine passion for helping individuals remain safe, supported, and independent at home.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Services & Pricing Section -->
+        <!-- Our Team Section -->
+        <section id="team">
+            <h2 class="section-title">Our Team</h2>
+            <div class="bio-section">
+                <div class="bio-photo-placeholder">
+                    [ Photo Placeholder ]
+                </div>
+                <div class="bio-text">
+                    <h3>Stefanie L. Coughlin, RN, BSN</h3>
+                    <div class="subtitle">Founder & Lead Registered Nurse</div>
+                    <p>My passion for home care began in my 20s while caring for my mother through multiple health challenges until her passing at the age of 68. I understand how hard it is for families balancing work, children, and caregiving. That experience shaped the way I support others today. I’ve been a nurse for over 10 years with an emergency‑medicine background and 8 years of home‑care experience. I’m committed to providing compassionate, reliable care that helps clients remain safe, independent, and comfortable at home. This work isn’t just my career — it’s my calling.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Office Hours Section -->
+        <section id="hours">
+            <h2 class="section-title">Office Hours & Availability</h2>
+            <div class="hours-container">
+                <div class="hours-grid">
+                    <div class="hours-card">
+                        <h4><i class="fa-solid fa-calendar-days" style="color: var(--secondary);"></i> Weekdays</h4>
+                        <p>Monday – Thursday</p>
+                        <span>9:00 AM – 3:00 PM</span>
+                    </div>
+                    <div class="hours-card">
+                        <h4><i class="fa-solid fa-calendar-week" style="color: var(--accent);"></i> Weekends & Fridays</h4>
+                        <p>Friday & Saturday: By Appointment</p>
+                        <span>Sunday: Closed</span>
+                    </div>
+                    <div class="hours-card">
+                        <h4><i class="fa-solid fa-user-nurse" style="color: var(--primary);"></i> Client Support</h4>
+                        <p>24/7 On-Call Coverage</p>
+                        <span>Direct Nurse Access for Active Clients</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Services Section -->
         <section id="services">
-            <h2 class="section-title">Our Services & Rates</h2>
-            <div class="services-grid">
+            <h2 class="section-title">Our Nursing Services & Rates</h2>
+            <div class="services-interactive-grid">
 
-                <div class="service-card">
-                    <h3>Initial Assessment <span class="service-price">$120</span></h3>
-                    <p>Comprehensive home nursing assessment and setup of an individualized care plan.</p>
+                <!-- Service 1 -->
+                <div class="service-card-interactive">
+                    <div class="service-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" alt="Initial Assessment">
+                        <span class="service-badge">Evaluation</span>
+                    </div>
+                    <div class="service-card-body">
+                        <h3>Initial Nursing Assessment</h3>
+                        <p>Comprehensive home nursing assessment and setup of an individualized care plan to determine specific client needs.</p>
+                        <div class="service-card-footer">
+                            <div class="rate-box">$120 [Rate]</div>
+                            <a onclick="selectServiceOption('Initial Assessment')" class="inquire-link">Book Visit &rarr;</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="service-card">
-                    <h3>Medication Management <span class="service-price">$120 / $60–$80</span></h3>
-                    <p>Initial setup box setup ($120) and ongoing weekly/bi-weekly refill management ($60–$80).</p>
+                <!-- Service 2 -->
+                <div class="service-card-interactive">
+                    <div class="service-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80" alt="Medication Management">
+                        <span class="service-badge">Daily Care</span>
+                    </div>
+                    <div class="service-card-body">
+                        <h3>Medication Management</h3>
+                        <p>Initial pill box organization, prescription list reconciliation, and ongoing weekly or bi-weekly refill management.</p>
+                        <div class="service-card-footer">
+                            <div class="rate-box">$120 Setup / $60–$80 Ongoing [Rate]</div>
+                            <a onclick="selectServiceOption('Medication Management')" class="inquire-link">Book Visit &rarr;</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="service-card">
-                    <h3>Wound Care Assistance <span class="service-price">$100–$120</span></h3>
-                    <p>Professional wound assessment, dressing changes, and specialized care plan execution.</p>
+                <!-- Service 3 -->
+                <div class="service-card-interactive">
+                    <div class="service-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80" alt="Wound Care Assistance">
+                        <span class="service-badge">Clinical Support</span>
+                    </div>
+                    <div class="service-card-body">
+                        <h3>Wound Care Assistance</h3>
+                        <p>Professional wound dressing changes, skin assessment, sterile care, and physician-ordered treatment execution.</p>
+                        <div class="service-card-footer">
+                            <div class="rate-box">$100–$120 [Rate]</div>
+                            <a onclick="selectServiceOption('Wound Care Assistance')" class="inquire-link">Book Visit &rarr;</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="service-card">
-                    <h3>Chronic Disease Check-In <span class="service-price">$90–$120</span></h3>
-                    <p>Routine vital checks and ongoing symptom management for COPD, Diabetes, CHF, and Hypertension.</p>
+                <!-- Service 4 -->
+                <div class="service-card-interactive">
+                    <div class="service-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600&q=80" alt="Chronic Disease Check-In">
+                        <span class="service-badge">Monitoring</span>
+                    </div>
+                    <div class="service-card-body">
+                        <h3>Chronic Disease Check-In</h3>
+                        <p>Routine vital signs check, symptom monitoring, and education for COPD, Diabetes, CHF, and Hypertension management.</p>
+                        <div class="service-card-footer">
+                            <div class="rate-box">$90–$120 [Rate]</div>
+                            <a onclick="selectServiceOption('Chronic Disease Check-In')" class="inquire-link">Book Visit &rarr;</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="service-card">
-                    <h3>Sick Visit / Triage <span class="service-price">$90–$120</span></h3>
-                    <p>In-person symptom evaluation and clinical guidance on appropriate next steps.</p>
+                <!-- Service 5 -->
+                <div class="service-card-interactive">
+                    <div class="service-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&w=600&q=80" alt="Sick Visit & Triage">
+                        <span class="service-badge">Urgent Support</span>
+                    </div>
+                    <div class="service-card-body">
+                        <h3>Sick Visit / Triage</h3>
+                        <p>Prompt in-person assessment of acute or changing symptoms with clear medical guidance for next steps (MD visit, urgent care, etc.).</p>
+                        <div class="service-card-footer">
+                            <div class="rate-box">$90–$120 [Rate]</div>
+                            <a onclick="selectServiceOption('Sick Visit / Triage')" class="inquire-link">Book Visit &rarr;</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="service-card">
-                    <h3>Pharmacy Pick-Up / Drop-Off <span class="service-price">$50–$70</span></h3>
-                    <p>Convenient prescription retrieval and delivery to your home based on travel distance.</p>
+                <!-- Service 6 - Updated Image URL -->
+                <div class="service-card-interactive">
+                    <div class="service-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1576602976047-174e57a47881?auto=format&fit=crop&w=600&q=80" alt="Pharmacy Pick-Up & Drop-Off">
+                        <span class="service-badge">Convenience</span>
+                    </div>
+                    <div class="service-card-body">
+                        <h3>Pharmacy Pick-Up & Drop-Off</h3>
+                        <p>Timely prescription retrieval from your local pharmacy and direct delivery to your residence.</p>
+                        <div class="service-card-footer">
+                            <div class="rate-box">$50–$70 [Rate]</div>
+                            <a onclick="selectServiceOption('Pharmacy Pick-Up')" class="inquire-link">Book Visit &rarr;</a>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -413,7 +1051,7 @@
                     
                     <!-- Formspree redirection setup -->
                     <input type="hidden" name="_to" value="Personalizedhomecare123@gmail.com">
-                    <input type="hidden" name="_subject" value="New Patient Inquiry - Personalized Homecare">
+                    <input type="hidden" name="_subject" value="New Patient Inquiry - Personalized Home Care, LLC">
 
                     <div class="form-row">
                         <div class="form-group">
@@ -422,7 +1060,7 @@
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone Number *</label>
-                            <input type="tel" id="phone" name="phone" required placeholder="(860) 000-0000">
+                            <input type="tel" id="phone" name="phone" required placeholder="959-265-0682">
                         </div>
                     </div>
 
@@ -464,11 +1102,81 @@
 
     <!-- Footer -->
     <footer>
-        <p><strong>Personalized Homecare</strong> | Stefanie L. Coughlin, RN, BSN</p>
+        <p><strong>Personalized Home Care, LLC</strong> | Stefanie L. Coughlin, RN, BSN</p>
         <p>Phone: 959-265-0682 | Email: Personalizedhomecare123@gmail.com</p>
         <p>Service Area: South Windsor, CT (06074) & Surrounding Areas • Mileage Rate: $0.70/mile</p>
+        
+        <!-- Social Media Icons -->
+        <div class="footer-social-links">
+            <a href="https://www.facebook.com/profile.php?id=61594777616543" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+
         <p style="font-size:0.8rem; color: #aaa; margin-top: 10px;">Payment Accepted: Cash • Apple Pay • Venmo | Private-Pay Only (Insurance billing not available)</p>
     </footer>
 
+    <!-- Interactive Logic & Active Navigation Scripts -->
+    <script>
+        // Interactive Service Booking Function
+        function selectServiceOption(serviceVal) {
+            const selectElem = document.getElementById('service');
+            if (selectElem) {
+                for (let option of selectElem.options) {
+                    if (option.value === serviceVal) {
+                        option.selected = true;
+                        break;
+                    }
+                }
+            }
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Active Navigation & Section Indicator Script
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('nav ul li a');
+            const navItems = document.querySelectorAll('nav ul li');
+            const indicatorBar = document.getElementById('active-section-display');
+            const titleText = document.getElementById('section-title-text');
+            const sections = document.querySelectorAll('section[id]');
+
+            // Update Yellow Indicator Bar & Display Banner Title on Header Link Click
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    navItems.forEach(item => item.classList.remove('active'));
+                    this.parentElement.classList.add('active');
+
+                    const title = this.getAttribute('data-title') || this.innerText;
+                    titleText.textContent = title;
+                    indicatorBar.classList.add('show');
+                });
+            });
+
+            // Highlight Section Indicator dynamically as user scrolls
+            window.addEventListener('scroll', () => {
+                let current = '';
+                const scrollPos = window.scrollY + 150;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                if (current) {
+                    navLinks.forEach(link => {
+                        const li = link.parentElement;
+                        li.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + current) {
+                            li.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
