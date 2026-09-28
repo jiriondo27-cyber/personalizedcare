@@ -6,6 +6,8 @@
     <title>Personalized Home Care, LLC | Private-Pay Intermittent Nursing Services</title>
     <!-- Font Awesome Icons for Social Media & Features -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CustomerBase Booking Widget Styles -->
+    <link href="https://app.customerbase.com/assets/online_booking_popup.css" rel="stylesheet" media="screen">
     <style>
         :root {
             --primary: #005f73;
@@ -508,33 +510,34 @@
 
         .service-card-footer {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
             border-top: 1px solid #edf2f7;
             padding-top: 1rem;
             margin-top: auto;
         }
 
-        .rate-box {
-            background-color: #e0f2f1;
-            color: var(--primary);
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 0.95rem;
-        }
-
-        .inquire-link {
-            color: var(--secondary);
-            font-weight: 700;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s ease;
+        .cb-booking-btn {
+            color: #ffffff;
+            background-color: #2996cc;
+            border: 1px solid #2996cc;
+            border-radius: 3px;
             cursor: pointer;
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            line-height: 1;
+            padding: 0.65rem 1.25rem;
+            text-align: center;
+            user-select: none;
+            vertical-align: middle;
+            align-self: center;
+            transition: background-color 0.2s ease;
         }
 
-        .inquire-link:hover {
-            color: var(--primary);
+        .cb-booking-btn:hover {
+            background-color: #207ca8;
+            border-color: #207ca8;
         }
 
         /* Bio & History Sections */
@@ -729,7 +732,6 @@
                 flex-direction: column;
                 text-align: center;
             }
-            /* Responsive adjustments for vertical timeline */
             .timeline-wrapper::before {
                 left: 20px;
             }
@@ -779,14 +781,14 @@
                     <li><a href="#history" data-title="Our History">Our History</a></li>
                     <li><a href="#team" data-title="Our Team">Our Team</a></li>
                     <li><a href="#hours" data-title="Office Hours & Availability">Office Hours</a></li>
-                    <li><a href="#services" data-title="Our Nursing Services & Rates">Services</a></li>
+                    <li><a href="#services" data-title="Our Nursing Services">Services</a></li>
                     <li><a href="#contact" data-title="Inquire About Services">Contact & Inquiry</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Active Section Banner Bar (Displays section title when clicked) -->
+    <!-- Active Section Banner Bar -->
     <div class="section-indicator-bar" id="active-section-display">
         Currently Viewing: <span id="section-title-text">Why Choose Us</span>
     </div>
@@ -863,6 +865,12 @@
                     <div class="timeline-content">
                         <h3>2. In-Home Consultation</h3>
                         <p>Stefanie conducts a thorough in-person assessment in your home to evaluate safety, medical needs, and specific care preferences.</p>
+                        
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed #cbd5e1; font-size: 0.88rem; text-align: left;">
+                            <strong style="color: var(--primary); display: block; margin-bottom: 0.4rem;">Before Your Appointment</strong>
+                            <p style="margin-bottom: 0.8rem;">Contact your primary care provider and ask them to fax a referral to <strong>860-926-2911</strong> at least 48–72 hours before your visit. The referral should include your demographic information, the most recent office note, and your current medication list.</p>
+                            <p>Gather all prescription bottles, over-the-counter medications, vitamins, and supplements so they are ready for review at the time of your visit.</p>
+                        </div>
                     </div>
                 </div>
 
@@ -940,7 +948,7 @@
 
         <!-- Interactive Services Section -->
         <section id="services">
-            <h2 class="section-title">Our Nursing Services & Rates</h2>
+            <h2 class="section-title">Our Nursing Services</h2>
             <div class="services-interactive-grid">
 
                 <!-- Service 1 -->
@@ -953,8 +961,7 @@
                         <h3>Initial Nursing Assessment</h3>
                         <p>Comprehensive home nursing assessment and setup of an individualized care plan to determine specific client needs.</p>
                         <div class="service-card-footer">
-                            <div class="rate-box">$120 [Rate]</div>
-                            <a onclick="selectServiceOption('Initial Assessment')" class="inquire-link">Book Visit &rarr;</a>
+                            <button type="button" class="cb-booking-btn" id="cb-booking-widget-XENefkDXweR527fw2jjfhz1S">Book Online</button>
                         </div>
                     </div>
                 </div>
@@ -969,8 +976,7 @@
                         <h3>Medication Management</h3>
                         <p>Initial pill box organization, prescription list reconciliation, and ongoing weekly or bi-weekly refill management.</p>
                         <div class="service-card-footer">
-                            <div class="rate-box">$120 Setup / $60–$80 Ongoing [Rate]</div>
-                            <a onclick="selectServiceOption('Medication Management')" class="inquire-link">Book Visit &rarr;</a>
+                            <button type="button" class="cb-booking-btn" id="cb-booking-widget-XENefkDXweR527fw2jjfhz1S">Book Online</button>
                         </div>
                     </div>
                 </div>
@@ -985,8 +991,7 @@
                         <h3>Wound Care Assistance</h3>
                         <p>Professional wound dressing changes, skin assessment, sterile care, and physician-ordered treatment execution.</p>
                         <div class="service-card-footer">
-                            <div class="rate-box">$100–$120 [Rate]</div>
-                            <a onclick="selectServiceOption('Wound Care Assistance')" class="inquire-link">Book Visit &rarr;</a>
+                            <button type="button" class="cb-booking-btn" id="cb-booking-widget-XENefkDXweR527fw2jjfhz1S">Book Online</button>
                         </div>
                     </div>
                 </div>
@@ -1001,8 +1006,7 @@
                         <h3>Chronic Disease Check-In</h3>
                         <p>Routine vital signs check, symptom monitoring, and education for COPD, Diabetes, CHF, and Hypertension management.</p>
                         <div class="service-card-footer">
-                            <div class="rate-box">$90–$120 [Rate]</div>
-                            <a onclick="selectServiceOption('Chronic Disease Check-In')" class="inquire-link">Book Visit &rarr;</a>
+                            <button type="button" class="cb-booking-btn" id="cb-booking-widget-XENefkDXweR527fw2jjfhz1S">Book Online</button>
                         </div>
                     </div>
                 </div>
@@ -1017,8 +1021,7 @@
                         <h3>Sick Visit / Triage</h3>
                         <p>Prompt in-person assessment of acute or changing symptoms with clear medical guidance for next steps (MD visit, urgent care, etc.).</p>
                         <div class="service-card-footer">
-                            <div class="rate-box">$90–$120 [Rate]</div>
-                            <a onclick="selectServiceOption('Sick Visit / Triage')" class="inquire-link">Book Visit &rarr;</a>
+                            <button type="button" class="cb-booking-btn" id="cb-booking-widget-XENefkDXweR527fw2jjfhz1S">Book Online</button>
                         </div>
                     </div>
                 </div>
@@ -1033,8 +1036,7 @@
                         <h3>Pharmacy Pick-Up & Drop-Off</h3>
                         <p>Timely prescription retrieval from your local pharmacy and direct delivery to your residence.</p>
                         <div class="service-card-footer">
-                            <div class="rate-box">$50–$70 [Rate]</div>
-                            <a onclick="selectServiceOption('Pharmacy Pick-Up')" class="inquire-link">Book Visit &rarr;</a>
+                            <button type="button" class="cb-booking-btn" id="cb-booking-widget-XENefkDXweR527fw2jjfhz1S">Book Online</button>
                         </div>
                     </div>
                 </div>
@@ -1046,10 +1048,8 @@
         <section id="contact">
             <h2 class="section-title">Inquire About Services</h2>
             <div class="form-container">
-                <!-- Using Formspree to route directly to Personalizedhomecare123@gmail.com -->
                 <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
                     
-                    <!-- Formspree redirection setup -->
                     <input type="hidden" name="_to" value="Personalizedhomecare123@gmail.com">
                     <input type="hidden" name="_subject" value="New Patient Inquiry - Personalized Home Care, LLC">
 
@@ -1078,12 +1078,12 @@
                     <div class="form-group">
                         <label for="service">Service Interested In</label>
                         <select id="service" name="service">
-                            <option value="Initial Assessment">Initial Assessment ($120)</option>
-                            <option value="Medication Management">Medication Management ($120 / $60-$80)</option>
-                            <option value="Wound Care Assistance">Wound Care Assistance ($100-$120)</option>
-                            <option value="Chronic Disease Check-In">Chronic Disease Check-In ($90-$120)</option>
-                            <option value="Sick Visit / Triage">Sick Visit / Triage ($90-$120)</option>
-                            <option value="Pharmacy Pick-Up">Pharmacy Pick-Up / Drop-Off ($50-$70)</option>
+                            <option value="Initial Assessment">Initial Assessment</option>
+                            <option value="Medication Management">Medication Management</option>
+                            <option value="Wound Care Assistance">Wound Care Assistance</option>
+                            <option value="Chronic Disease Check-In">Chronic Disease Check-In</option>
+                            <option value="Sick Visit / Triage">Sick Visit / Triage</option>
+                            <option value="Pharmacy Pick-Up">Pharmacy Pick-Up / Drop-Off</option>
                             <option value="General Inquiry">General Consultation / Other</option>
                         </select>
                     </div>
@@ -1114,26 +1114,11 @@
         <p style="font-size:0.8rem; color: #aaa; margin-top: 10px;">Payment Accepted: Cash • Apple Pay • Venmo | Private-Pay Only (Insurance billing not available)</p>
     </footer>
 
-    <!-- Interactive Logic & Active Navigation Scripts -->
-    <script>
-        // Interactive Service Booking Function
-        function selectServiceOption(serviceVal) {
-            const selectElem = document.getElementById('service');
-            if (selectElem) {
-                for (let option of selectElem.options) {
-                    if (option.value === serviceVal) {
-                        option.selected = true;
-                        break;
-                    }
-                }
-            }
-            const contactSection = document.getElementById('contact');
-            if (contactSection) {
-                contactSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
+    <!-- CustomerBase Booking Widget Script -->
+    <script src="https://app.customerbase.com/assets/appointment_popup.js" data-token="XENefkDXweR527fw2jjfhz1S" data-url="https://app.customerbase.com/booking/XENefkDXweR527fw2jjfhz1S/page"></script>
 
-        // Active Navigation & Section Indicator Script
+    <!-- Active Navigation Scripts -->
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
             const navLinks = document.querySelectorAll('nav ul li a');
             const navItems = document.querySelectorAll('nav ul li');
@@ -1141,7 +1126,6 @@
             const titleText = document.getElementById('section-title-text');
             const sections = document.querySelectorAll('section[id]');
 
-            // Update Yellow Indicator Bar & Display Banner Title on Header Link Click
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     navItems.forEach(item => item.classList.remove('active'));
@@ -1153,7 +1137,6 @@
                 });
             });
 
-            // Highlight Section Indicator dynamically as user scrolls
             window.addEventListener('scroll', () => {
                 let current = '';
                 const scrollPos = window.scrollY + 150;
