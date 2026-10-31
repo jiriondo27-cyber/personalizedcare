@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personalized Home Care, LLC | Private-Pay Intermittent Nursing Services</title>
+    <title>Private Nursing Services LLC | Private-Pay Intermittent Nursing Services</title>
     <!-- Font Awesome Icons for Social Media & Features -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- CustomerBase Booking Widget Styles -->
-    <link href="https://app.customerbase.com/assets/online_booking_popup.css" rel="stylesheet" media="screen">
     <style>
         :root {
             --primary: #005f73;
@@ -43,32 +41,22 @@
             padding: 0.5rem 2rem;
             font-size: 0.85rem;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 1.5rem;
         }
 
         .top-bar-info {
             display: flex;
             gap: 1.5rem;
+            align-items: center;
             flex-wrap: wrap;
         }
 
         .top-bar-info i {
             color: var(--accent);
             margin-right: 5px;
-        }
-
-        .top-bar-social a {
-            color: #ffffff;
-            margin-left: 10px;
-            font-size: 0.95rem;
-            transition: color 0.2s ease;
-        }
-
-        .top-bar-social a:hover {
-            color: var(--accent);
         }
 
         /* Header & Navigation */
@@ -91,15 +79,34 @@
             flex-wrap: wrap;
         }
 
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-img {
+            height: 55px;
+            width: auto;
+            object-fit: contain;
+            background: #ffffff;
+            padding: 4px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
         .logo h1 {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            line-height: 1.2;
         }
 
         .logo p {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #e9d8a6;
             font-weight: 500;
             margin-bottom: 0.8rem;
@@ -507,39 +514,6 @@
             flex-grow: 1;
         }
 
-        .service-card-footer {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            border-top: 1px solid #edf2f7;
-            padding-top: 1rem;
-            margin-top: auto;
-        }
-
-        .cb-booking-btn {
-            color: #ffffff;
-            background-color: #2996cc;
-            border: 1px solid #2996cc;
-            border-radius: 3px;
-            cursor: pointer;
-            display: inline-block;
-            font-size: 0.875rem;
-            font-weight: 500;
-            line-height: 1;
-            padding: 0.65rem 1.25rem;
-            text-align: center;
-            user-select: none;
-            vertical-align: middle;
-            align-self: center;
-            text-decoration: none;
-            transition: background-color 0.2s ease;
-        }
-
-        .cb-booking-btn:hover {
-            background-color: #207ca8;
-            border-color: #207ca8;
-        }
-
         /* Bio & History Sections */
         .bio-section, .history-section {
             background-color: #ffffff;
@@ -561,7 +535,7 @@
             height: 180px;
             border-radius: 50%;
             object-fit: cover;
-            object-position: 45% 20%;
+            object-position: center top;
             border: 4px solid var(--secondary);
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             margin: 0 auto;
@@ -669,7 +643,45 @@
             background-color: #004d5e;
         }
 
-        /* Footer & Social Icons */
+        /* Success & Status Notification Banner */
+        .form-status-banner {
+            display: none;
+            margin-top: 1.25rem;
+            padding: 1rem 1.25rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-align: center;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .form-status-banner.success {
+            display: block;
+            background-color: #d1e7dd;
+            color: #0f5132;
+            border: 1px solid #badbcc;
+        }
+
+        .form-status-banner.error {
+            display: block;
+            background-color: #f8d7da;
+            color: #842029;
+            border: 1px solid #f5c2c7;
+        }
+
+        .form-status-banner.sending {
+            display: block;
+            background-color: #e2e3e5;
+            color: #41464b;
+            border: 1px solid #d3d6d8;
+        }
+
+        /* Floating Sticky Text Button - Hidden on Desktop by Default */
+        .floating-sms-btn {
+            display: none; 
+        }
+
+        /* Footer */
         footer {
             background-color: var(--dark);
             color: #ffffff;
@@ -683,33 +695,7 @@
             color: #d3d3d3;
         }
 
-        .footer-social-links {
-            margin: 1.2rem 0;
-            display: flex;
-            justify-content: center;
-            gap: 1.2rem;
-        }
-
-        .footer-social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255,255,255,0.1);
-            color: #ffffff;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            text-decoration: none;
-            transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
-        }
-
-        .footer-social-links a:hover {
-            background-color: var(--accent);
-            color: #ffffff;
-            transform: translateY(-3px);
-        }
-
+        /* Mobile Responsive Styles & Floating Button Activation */
         @media (max-width: 768px) {
             .header-container, .top-bar {
                 flex-direction: column;
@@ -747,6 +733,37 @@
             .timeline-item:nth-child(odd) .timeline-content h3 {
                 justify-content: flex-start;
             }
+
+            /* Make Floating SMS Button Visible ONLY on Mobile Screens */
+            .floating-sms-btn {
+                position: fixed;
+                bottom: 16px;
+                right: 16px;
+                z-index: 9999;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                background-color: #25d366;
+                color: #ffffff !important;
+                padding: 0.75rem 1.2rem;
+                border-radius: 50px;
+                font-weight: 700;
+                font-size: 0.88rem;
+                text-decoration: none;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+                border: 2px solid rgba(255, 255, 255, 0.3);
+                animation: subtle-pulse 2.5s infinite;
+            }
+
+            footer {
+                padding-bottom: 5rem; /* Extra padding so footer doesn't overlap floating button on mobile */
+            }
+        }
+
+        @keyframes subtle-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
     </style>
 </head>
@@ -755,21 +772,21 @@
     <!-- Top Announcement Bar for Hours & Quick Contact -->
     <div class="top-bar">
         <div class="top-bar-info">
-            <span><i class="fa-solid fa-clock"></i> Office Hours: Mon - Thurs: 9:00 AM - 3:00 PM | Fri, Sat & Sun: Closed</span>
+            <span><i class="fa-solid fa-clock"></i> Office Hours: Mon - Thurs: 9:00 AM - 3:00 PM | Fri - Sat: By Appt | Sun: Closed</span>
             <span><i class="fa-solid fa-phone"></i> 959-265-0682</span>
-        </div>
-        <div class="top-bar-social">
-            <a href="https://www.facebook.com/profile.php?id=61594777616543" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
         </div>
     </div>
 
     <!-- Navigation Header -->
     <header>
         <div class="header-container">
-            <div class="logo">
-                <h1>Personalized Home Care, LLC</h1>
-                <p>Private-Pay Intermittent Nursing Services</p>
-            </div>
+            <a href="#" class="logo-container">
+                <img src="logo.png" alt="Private Nursing Services Logo" class="logo-img">
+                <div class="logo">
+                    <h1>Private Nursing Services LLC</h1>
+                    <p>Private-Pay Intermittent Nursing Services</p>
+                </div>
+            </a>
             <nav>
                 <ul id="nav-list">
                     <li><a href="#why-us" data-title="Why Choose Us">Why Choose Us</a></li>
@@ -802,7 +819,7 @@
 
         <!-- Why Choose Us Section (4 Visual Pillars) -->
         <section id="why-us">
-            <h2 class="section-title">Why Choose Personalized Home Care, LLC</h2>
+            <h2 class="section-title">Why Choose Private Nursing Services LLC</h2>
             <div class="reasons-grid">
                 
                 <div class="reason-card">
@@ -851,7 +868,7 @@
                     <div class="timeline-badge"><i class="fa-solid fa-phone-volume"></i></div>
                     <div class="timeline-content">
                         <h3>1. Direct Initial Contact</h3>
-                        <p>Reach out via phone or online inquiry to discuss your immediate needs, concerns, or questions with a Registered Nurse.</p>
+                        <p>Reach out via phone, text, or online inquiry to discuss your immediate needs, concerns, or questions with a Registered Nurse.</p>
                     </div>
                 </div>
 
@@ -897,7 +914,7 @@
             <div class="history-section">
                 <div class="history-card">
                     <h3>Established in 2026</h3>
-                    <p>Personalized Home Care, LLC may be a young company, but it is built on a strong foundation of experience, dedication, and compassion. Our owner brings 8 years of hands‑on expertise in the home‑care industry, providing high‑quality, client‑centered nursing services throughout Connecticut.</p>
+                    <p>Private Nursing Services LLC may be a young company, but it is built on a strong foundation of experience, dedication, and compassion. Our owner brings 8 years of hands‑on expertise in the home‑care industry, providing high‑quality, client‑centered nursing services throughout Connecticut.</p>
                     <p>This company was created to offer a more personal, reliable, and professional approach to in‑home care—one where every client is treated with dignity, respect, and individualized attention. Although our business is new, our commitment to excellence is backed by nearly a decade of real‑world clinical experience and a genuine passion for helping individuals remain safe, supported, and independent at home.</p>
                 </div>
             </div>
@@ -928,14 +945,19 @@
                     </div>
                     <div class="hours-card">
                         <h4><i class="fa-solid fa-calendar-week" style="color: var(--accent);"></i> Weekends & Fridays</h4>
-                        <p>Friday, Saturday & Sunday</p>
-                        <span>Closed</span>
+                        <p>Friday & Saturday: By Appointment</p>
+                        <span>Sunday: Closed</span>
+                    </div>
+                    <div class="hours-card">
+                        <h4><i class="fa-solid fa-user-nurse" style="color: var(--primary);"></i> Client Support</h4>
+                        <p>24/7 On-Call Coverage</p>
+                        <span>Direct Nurse Access for Active Clients</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Interactive Services Section -->
+        <!-- Interactive Services Section (No Booking) -->
         <section id="services">
             <h2 class="section-title">Our Nursing Services</h2>
             <div class="services-interactive-grid">
@@ -949,9 +971,6 @@
                     <div class="service-card-body">
                         <h3>Initial Nursing Assessment</h3>
                         <p>Comprehensive home nursing assessment and setup of an individualized care plan to determine specific client needs.</p>
-                        <div class="service-card-footer">
-                            <a href="https://app.customerbase.com/booking/XENefkDXweR527fw2jjfhz1S/page" class="cb-booking-btn" id="cb-booking-widget-XENefkDXweR527fw2jjfhz1S-1">Book Online</a>
-                        </div>
                     </div>
                 </div>
 
@@ -964,9 +983,6 @@
                     <div class="service-card-body">
                         <h3>Medication Management</h3>
                         <p>Initial pill box organization, prescription list reconciliation, and ongoing weekly or bi-weekly refill management.</p>
-                        <div class="service-card-footer">
-                            <a href="https://app.customerbase.com/booking/XENefkDXweR527fw2jjfhz1S/page" class="cb-booking-btn" id="cb-booking-widget-XENefkDXweR527fw2jjfhz1S-2">Book Online</a>
-                        </div>
                     </div>
                 </div>
 
@@ -979,9 +995,6 @@
                     <div class="service-card-body">
                         <h3>Wound Care Assistance</h3>
                         <p>Professional wound dressing changes, skin assessment, sterile care, and physician-ordered treatment execution.</p>
-                        <div class="service-card-footer">
-                            <a href="https://app.customerbase.com/booking/XENefkDXweR527fw2jjfhz1S/page" class="cb-booking-btn" id="cb-booking-widget-XENefkDXweR527fw2jjfhz1S-3">Book Online</a>
-                        </div>
                     </div>
                 </div>
 
@@ -994,9 +1007,6 @@
                     <div class="service-card-body">
                         <h3>Chronic Disease Check-In</h3>
                         <p>Routine vital signs check, symptom monitoring, and education for COPD, Diabetes, CHF, and Hypertension management.</p>
-                        <div class="service-card-footer">
-                            <a href="https://app.customerbase.com/booking/XENefkDXweR527fw2jjfhz1S/page" class="cb-booking-btn" id="cb-booking-widget-XENefkDXweR527fw2jjfhz1S-4">Book Online</a>
-                        </div>
                     </div>
                 </div>
 
@@ -1009,9 +1019,6 @@
                     <div class="service-card-body">
                         <h3>Sick Visit / Triage</h3>
                         <p>Prompt in-person assessment of acute or changing symptoms with clear medical guidance for next steps (MD visit, urgent care, etc.).</p>
-                        <div class="service-card-footer">
-                            <a href="https://app.customerbase.com/booking/XENefkDXweR527fw2jjfhz1S/page" class="cb-booking-btn" id="cb-booking-widget-XENefkDXweR527fw2jjfhz1S-5">Book Online</a>
-                        </div>
                     </div>
                 </div>
 
@@ -1024,9 +1031,6 @@
                     <div class="service-card-body">
                         <h3>Pharmacy Pick-Up & Drop-Off</h3>
                         <p>Timely prescription retrieval from your local pharmacy and direct delivery to your residence.</p>
-                        <div class="service-card-footer">
-                            <a href="https://app.customerbase.com/booking/XENefkDXweR527fw2jjfhz1S/page" class="cb-booking-btn" id="cb-booking-widget-XENefkDXweR527fw2jjfhz1S-6">Book Online</a>
-                        </div>
                     </div>
                 </div>
 
@@ -1037,10 +1041,11 @@
         <section id="contact">
             <h2 class="section-title">Inquire About Services</h2>
             <div class="form-container">
-                <!-- IMPORTANT: Replace YOUR_ACTUAL_FORMSPREE_ID with your Formspree endpoint ID (e.g., xabcdefg) -->
-                <form action="https://formspree.io/f/YOUR_ACTUAL_FORMSPREE_ID" method="POST">
+                
+                <form id="care-inquiry-form" action="https://formspree.io/f/xdeewgkr" method="POST">
                     
-                    <input type="hidden" name="_subject" value="New Patient Inquiry - Personalized Home Care, LLC">
+                    <input type="hidden" name="_to" value="PrivateNursingCT@gmail.com">
+                    <input type="hidden" name="_subject" value="New Patient Inquiry - Private Nursing Services LLC">
 
                     <div class="form-row">
                         <div class="form-group">
@@ -1082,31 +1087,31 @@
                         <textarea id="message" name="message" required placeholder="Please describe the care needed or best times to reach you..."></textarea>
                     </div>
 
-                    <button type="submit" class="submit-btn">Submit Care Inquiry</button>
+                    <button type="submit" id="submit-btn" class="submit-btn">Submit Care Inquiry</button>
                 </form>
+
+                <!-- Status Banner Display -->
+                <div id="form-status" class="form-status-banner"></div>
+
             </div>
         </section>
 
     </div>
 
+    <!-- Floating Mobile-Only Sticky Text Button -->
+    <a href="sms:9592650682?body=Hi%20Stefanie,%20I'm%20interested%20in%20learning%20more%20about%20your%20nursing%20services." class="floating-sms-btn" aria-label="Text Nurse Stefanie Now">
+        <i class="fa-solid fa-comment-sms"></i> Text Nurse Stefanie Now
+    </a>
+
     <!-- Footer -->
     <footer>
-        <p><strong>Personalized Home Care, LLC</strong> | Stefanie L. Coughlin, RN, BSN</p>
-        <p>Phone: 959-265-0682 | Email: Personalizedhomecare123@gmail.com</p>
+        <p><strong>Private Nursing Services LLC</strong> | Stefanie L. Coughlin, RN, BSN</p>
+        <p>Phone: 959-265-0682 | Email: PrivateNursingCT@gmail.com</p>
         <p>Service Area: South Windsor, CT (06074) & Surrounding Areas • Mileage Rate: $0.76/mile</p>
-        
-        <!-- Social Media Icons -->
-        <div class="footer-social-links">
-            <a href="https://www.facebook.com/profile.php?id=61594777616543" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-        </div>
-
         <p style="font-size:0.8rem; color: #aaa; margin-top: 10px;">Payment Accepted: Cash • Apple Pay • Venmo | Private-Pay Only (Insurance billing not available)</p>
     </footer>
 
-    <!-- CustomerBase Booking Widget Script -->
-    <script src="https://app.customerbase.com/assets/appointment_popup.js" data-token="XENefkDXweR527fw2jjfhz1S" data-url="https://app.customerbase.com/booking/XENefkDXweR527fw2jjfhz1S/page"></script>
-
-    <!-- Active Navigation Scripts -->
+    <!-- Active Navigation & Background Submission Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const navLinks = document.querySelectorAll('nav ul li a');
@@ -1148,6 +1153,53 @@
                     });
                 }
             });
+
+            // Silent Background Submission Script
+            const form = document.getElementById('care-inquiry-form');
+            const statusBanner = document.getElementById('form-status');
+            const submitBtn = document.getElementById('submit-btn');
+
+            if (form) {
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    
+                    // Show sending state
+                    statusBanner.className = 'form-status-banner sending';
+                    statusBanner.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing your inquiry...';
+                    submitBtn.disabled = true;
+
+                    const formData = new FormData(form);
+
+                    try {
+                        const response = await fetch(form.action, {
+                            method: form.method,
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+
+                        if (response.ok) {
+                            statusBanner.className = 'form-status-banner success';
+                            statusBanner.innerHTML = '<i class="fa-solid fa-circle-check"></i> Thank you! Your care inquiry has been submitted successfully. Stefanie will be in touch shortly.';
+                            form.reset();
+                        } else {
+                            const data = await response.json();
+                            statusBanner.className = 'form-status-banner error';
+                            if (Object.hasOwn(data, 'errors')) {
+                                statusBanner.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> ' + data["errors"].map(error => error["message"]).join(", ");
+                            } else {
+                                statusBanner.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> There was a problem submitting your inquiry. Please try again or call us directly.';
+                            }
+                        }
+                    } catch (error) {
+                        statusBanner.className = 'form-status-banner error';
+                        statusBanner.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Network error. Please check your connection or contact us by phone.';
+                    } finally {
+                        submitBtn.disabled = false;
+                    }
+                });
+            }
         });
     </script>
 </body>
